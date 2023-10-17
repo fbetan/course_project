@@ -1,18 +1,16 @@
 from django.shortcuts import render
+from django.http import HttpResponse, Http404
 import requests
 from politicians.models import Politician, Funding
 import politicians.templates
 
 
-# Create your views here.
+
 class API:
     def __init__(self):
         self.api_key = "181b03bde6f910748664d4f7c1811fb3"
         
-        
-    
-    def add_politicians(self,state):
-    
+    def add_politicians(self,state):   
         base_url = "http://www.opensecrets.org/api/?method=getLegislators"
         response = requests.get(base_url + f"&id={state}&apikey={self.api_key}&output=json", timeout=120)
         response_list = response.json()['response']['legislator']
@@ -86,8 +84,8 @@ def collect(request):
         total_count = Politician.objects.count()
         return render(request, 'data_collector/collection.html', {"count" : count, "state" : selected_state, "politicians" : politicians, "total_count" : total_count})
 
-    except KeyError:
-        return "idunno"
+    except Http404:
+        return("Error 404, data may not be available yet. Please try again later")
 
 def collect_industry(request):
     try:
@@ -106,5 +104,6 @@ def collect_industry(request):
         return render(request, 'data_collector/fundinginfo.html',
                           {"name" : name,
                           "funding_info" : funding_info})
-    except KeyError:
-        return 'ialsodunno'
+    
+    except Http404:
+        return("Error 404, data may not be available yet. Please try again later")
