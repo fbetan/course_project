@@ -17,3 +17,6 @@ class PoliticianTestCase(TestCase):
         test_count = Politician.objects.filter(state='XX').all().count()
         self.assertEqual(test_count, 1)
 
+
+        
+

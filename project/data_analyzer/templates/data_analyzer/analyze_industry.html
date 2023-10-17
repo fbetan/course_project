@@ -12,6 +12,14 @@
                     <p><strong>{{ funding.cand_name }} : {{ funding.total }}</strong></p>
                 {% endfor %}
             </div>
+            <br>
+            <div class="container">
+                <h4>Total Republic Contributions: {{ sum_republican }}</h4>
+                <br>
+                <h4>Total Democratic Contributions: {{ sum_democratic }}</h4>
+                <br>
+                <h4>Total Third Party Contributions: {{ sum_third }}</h4>
+            </div>
         </div>
     </body>
 </html>
