@@ -35,4 +35,5 @@ Design:
     - Django provides simple test suite functionality, which can run all test.py files present across applications. Unit and Integration testing for the three separate applications was implemented to ensure proper function of app functions, api calls, and database integration. 
 
 -CI/CD:
-    - The project uses a github respository with 2 branches, main and dev, for source control. 
+    - The project uses a github respository with 2 branches, main and dev, for source control and CI/CD.
+    Note that the project is not currently hosted on any website, as most charge a fee for service uptime. 
